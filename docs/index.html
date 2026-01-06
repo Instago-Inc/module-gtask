@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gtask Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/gtask - V8 module</h1>
+      <p class="intro">Keep Google Tasks in sync across your workflows with a small helper that focuses on everyday list and task operations. It is built to be predictable and low-ceremony, so flows can stay readable while still handling common task management needs.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/gtask - V8 module</h1>
+<p>Keep Google Tasks in sync across your workflows with a small helper that focuses on everyday list and task operations. It is built to be predictable and low-ceremony, so flows can stay readable while still handling common task management needs.</p>
+<p>Learn more about Instago at https://instago.ai.</p>
+<h2>Technical reference</h2>
+<p>Exports:</p>
+<ul>
+<li><code>configure(opts)</code></li>
+<li><code>listTasklists({ maxResults, pageToken, showHidden, debug })</code></li>
+<li><code>getTasklist({ tasklistId, debug })</code></li>
+<li><code>createTasklist({ title, debug })</code></li>
+<li><code>deleteTasklist({ tasklistId, debug })</code></li>
+<li><code>listTasks({ tasklistId, maxResults, pageToken, showCompleted, showDeleted, showHidden, dueMin, dueMax, completedMin, completedMax, updatedMin, debug })</code></li>
+<li><code>getTask({ tasklistId, taskId, debug })</code></li>
+<li><code>createTask({ tasklistId, task, title, notes, due, status, parent, position, debug })</code></li>
+<li><code>updateTask({ tasklistId, taskId, task, title, notes, due, status, parent, position, debug })</code></li>
+<li><code>patchTask({ tasklistId, taskId, task, title, notes, due, status, parent, position, debug })</code></li>
+<li><code>completeTask({ tasklistId, taskId, completed, debug })</code></li>
+<li><code>deleteTask({ tasklistId, taskId, debug })</code></li>
+<li><code>moveTask({ tasklistId, taskId, parent, previous, destination, debug })</code></li>
+<li><code>selfTest()</code></li>
+</ul>
+<p>Usage:</p>
+<pre class="code"><code>
+const gtask = require(&#x27;gtask@latest&#x27;);
+</code></pre>
+<p>Configuration:</p>
+<ul>
+<li><code>configure(opts)</code> forwards OAuth options to <code>gauth</code> and accepts <code>userId</code> (default <code>me</code>).</li>
+<li><code>env.json</code> does not declare required or optional keys for this module.</li>
+</ul>
+<p>Examples:</p>
+<pre class="code"><code>
+const gtask = require(&#x27;gtask@latest&#x27;);
+
+gtask.configure({
+  clientId: env.GOOGLE_CLIENT_ID,
+  clientSecret: env.GOOGLE_CLIENT_SECRET,
+  refreshToken: env.GOOGLE_REFRESH_TOKEN
+});
+
+const listRes = await gtask.listTasklists({ maxResults: 5 });
+if (!listRes.ok) {
+  console.error(&#x27;listTasklists failed:&#x27;, listRes.error);
+  return;
+}
+
+const tasklistId = listRes.data.items[0].id;
+const taskRes = await gtask.createTask({
+  tasklistId,
+  title: &#x27;Review project plan&#x27;,
+  notes: &#x27;Check due dates and assignments&#x27;
+});
+
+console.log(&#x27;task created:&#x27;, taskRes.ok, taskRes.data &amp;&amp; taskRes.data.id);
+</code></pre>
+<pre class="code"><code>
+const gtask = require(&#x27;gtask@latest&#x27;);
+
+const res = await gtask.completeTask({
+  tasklistId: &#x27;TASKLIST_ID&#x27;,
+  taskId: &#x27;TASK_ID&#x27;,
+  completed: new Date().toISOString()
+});
+
+console.log(&#x27;completed:&#x27;, res.ok);
+</code></pre>
+      </div>
+      
+    </main>
+  </body>
+</html>

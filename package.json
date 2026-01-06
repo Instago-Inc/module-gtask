@@ -1,0 +1,20 @@
+{
+  "name": "@instago/gtask",
+  "version": "1.0.1",
+  "description": "api to interact with google tasks",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "google",
+    "tasks",
+    "oauth",
+    "workflow"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}
