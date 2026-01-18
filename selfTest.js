@@ -1,4 +1,4 @@
-const mod = require('gtask@1.0.0');
+const mod = require('gtask@latest');
 
 (async () => {
   if (!mod || typeof mod.selfTest !== 'function') {

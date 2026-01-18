@@ -1,6 +1,6 @@
 # module/gtask - V8 module
 
-Keep Google Tasks in sync across your workflows with a small helper that focuses on everyday list and task operations. It is built to be predictable and low-ceremony, so flows can stay readable while still handling common task management needs.
+Keep Google Tasks in sync across your workflows with a compact helper that sticks to the essentials. Use it when you want reliable tasklist and task operations without extra setup or ceremony.
 
 Learn more about Instago at https://instago.ai.
 
@@ -29,6 +29,7 @@ const gtask = require('gtask@latest');
 
 Configuration:
 - `configure(opts)` forwards OAuth options to `gauth` and accepts `userId` (default `me`).
+- All API calls return `{ ok, data, error }` with optional `status` and `body` fields on failures.
 - `env.json` does not declare required or optional keys for this module.
 
 Examples:

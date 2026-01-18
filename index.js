@@ -1,11 +1,11 @@
-// Google Tasks helper using OAuth2 refresh token via gauth@1.0.0.
+// Google Tasks helper using OAuth2 refresh token via gauth@latest.
 // API returns { ok, data, error } and avoids throwing for runtime resilience.
 
 (function () {
-  const httpx = require('http@1.0.0');
-  const gauth = require('gauth@1.0.0');
-  const auth = require('auth@1.0.0');
-  const qs = require('qs@1.0.0');
+  const httpx = require('http@latest');
+  const gauth = require('gauth@latest');
+  const auth = require('auth@latest');
+  const qs = require('qs@latest');
   const TASKS_BASE = 'https://tasks.googleapis.com/tasks/v1';
   const state = { userId: 'me' };
 

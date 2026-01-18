@@ -59,12 +59,12 @@
   <body>
     <main>
       <h1>module/gtask - V8 module</h1>
-      <p class="intro">Keep Google Tasks in sync across your workflows with a small helper that focuses on everyday list and task operations. It is built to be predictable and low-ceremony, so flows can stay readable while still handling common task management needs.</p>
+      <p class="intro">Keep Google Tasks in sync across your workflows with a compact helper that sticks to the essentials. Use it when you want reliable tasklist and task operations without extra setup or ceremony.</p>
       <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
       <div class="section">
         <h2>Technical reference</h2>
         <h1>module/gtask - V8 module</h1>
-<p>Keep Google Tasks in sync across your workflows with a small helper that focuses on everyday list and task operations. It is built to be predictable and low-ceremony, so flows can stay readable while still handling common task management needs.</p>
+<p>Keep Google Tasks in sync across your workflows with a compact helper that sticks to the essentials. Use it when you want reliable tasklist and task operations without extra setup or ceremony.</p>
 <p>Learn more about Instago at https://instago.ai.</p>
 <h2>Technical reference</h2>
 <p>Exports:</p>
@@ -91,6 +91,7 @@ const gtask = require(&#x27;gtask@latest&#x27;);
 <p>Configuration:</p>
 <ul>
 <li><code>configure(opts)</code> forwards OAuth options to <code>gauth</code> and accepts <code>userId</code> (default <code>me</code>).</li>
+<li>All API calls return <code>{ ok, data, error }</code> with optional <code>status</code> and <code>body</code> fields on failures.</li>
 <li><code>env.json</code> does not declare required or optional keys for this module.</li>
 </ul>
 <p>Examples:</p>
@@ -130,7 +131,15 @@ const res = await gtask.completeTask({
 console.log(&#x27;completed:&#x27;, res.ok);
 </code></pre>
       </div>
-      
+      <div class="section">
+  <h2>Changelog</h2>
+  <h2>v1.0.1 - Google Tasks API Starter</h2>
+<p>Launched the npm module with OAuth-ready helpers for managing Google Tasks so workflows can access tasks securely. Keywords: Google Tasks, OAuth, workflow automation, API helper.</p>
+<h3>Added</h3>
+<ul>
+<li>initial CommonJS entry point, README, and self-test scaffolding for the Google Tasks API wrapper.</li>
+</ul>
+</div>
     </main>
   </body>
 </html>
